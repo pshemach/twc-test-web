@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Title from "./Title";
 import Input from "./Input";
@@ -21,6 +21,10 @@ export default function RegistorForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (values.password !== values.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
     try {
       await axios.post("http://localhost:5000/register", values);
       console.log("Registration successful");
@@ -53,9 +57,22 @@ export default function RegistorForm() {
           onChange={handleChange}
           style={{ display: "block" }}
         />
+        <Input
+          type="password"
+          name="confirmPassword"
+          value={values.confirmPassword}
+          placeholder="confirm password"
+          onChange={handleChange}
+          style={{ display: "block" }}
+        />
       </div>
       <Button type="submit">register</Button>
       {error && <p style={{ color: "red" }}>{error}</p>}
+      <div>
+        <Link to="/login" style={{ color: "#ffffff" }}>
+          {"< Back to login"}
+        </Link>
+      </div>
     </form>
   );
 }
