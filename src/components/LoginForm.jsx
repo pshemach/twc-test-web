@@ -39,7 +39,7 @@ export default function LoginForm() {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ backgroundColor: "#083F46" }}>
       <div>
         <Title>Hi there,</Title>
         <br></br>

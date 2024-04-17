@@ -1,10 +1,11 @@
 import LoginForm from "../components/LoginForm";
-import Background from "../components/BackgroundOne";
+import LogoLarge from "../components/LogoLarge";
 
 export default function Login() {
   return (
-    <Background>
+    <div>
       <LoginForm />
-    </Background>
+      <LogoLarge />
+    </div>
   );
 }
